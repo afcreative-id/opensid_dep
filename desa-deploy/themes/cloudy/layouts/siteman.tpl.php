@@ -37,6 +37,7 @@
   <link href="<?= base_url($this->theme_folder . '/' . $this->theme . '/css/main.css'); ?>" rel="stylesheet" />
   <link href="<?= base_url($this->theme_folder . '/' . $this->theme . '/css/responsive.css'); ?>" rel="stylesheet" />
   <?php $this->load->view('head_tags_front') ?>
+  <script src="<?= base_url($this->theme_folder . '/' . $this->theme . '/js/head_main.js'); ?>"></script>
 </head>
 
 <body class="siteman" itemscope="itemscope" itemtype="https://schema.org/WebPage">
@@ -49,33 +50,36 @@
       </div>
     </div>
     <form id="form-body" action="<?= site_url('siteman/auth') ?>" method="post">
-      <?php if ($_SESSION['siteman_wait'] == 1) : ?>
+      <?php if ($this->session->siteman_wait == 1) : ?>
         <div class="form-response">
           <span class="response-block">Gagal 3 kali, silakan coba lagi nanti dalam<br><?= waktu_ind((time() - $_SESSION['siteman_timeout']) * (-1)); ?> kedepan</span>
         </div>
       <?php else : ?>
         <div class="input-form">
           <i class="fa">&#xf007;</i>
-          <input name="username" type="text" placeholder="Nama Pengguna" <?php if ($_SESSION['siteman_wait'] == 1) : ?> disabled="disabled" <?php endif; ?> value="" required />
+          <input name="username" id="username" type="text" placeholder="Nama Pengguna" <?php if ($_SESSION['siteman_wait'] == 1) : ?> disabled="disabled" <?php endif; ?> value="" required />
           <div class="clear"></div>
         </div>
         <div class="input-form">
           <i class="fa">&#xf023;</i>
-          <input name="password" type="password" placeholder="Kata Sandi" <?php if ($_SESSION['siteman_wait'] == 1) : ?>disabled="disabled" <?php endif; ?> value="" required />
+          <input name="password" id="password" type="password" placeholder="Kata Sandi" <?php if ($_SESSION['siteman_wait'] == 1) : ?>disabled="disabled" <?php endif; ?> value="" required />
           <div class="clear"></div>
+        </div>
+        <div class="input-checkbox">
+          <input type="checkbox" id="checkbox" class="form-checkbox"> Tampilkan kata sandi
         </div>
         <div class="btn-form">
           <button type="submit">Masuk</button>
         </div>
         <div class="form-response">
           <span class="response-warn">
-            <?php if ($_SESSION['siteman'] == -1) : ?>
-              Nama Pengguna atau Kata Sandi yang Anda masukkan salah.<br>
-              <?php if ($_SESSION['siteman_try']) : ?>
-                Kesempatan mencoba <?= ($_SESSION['siteman_try'] - 1); ?> kali lagi.</p>
+            <?php if ($this->session->siteman == -1 && $this->session->siteman_try < 4) : ?>
+              Nama pengguna atau kata sandi yang Anda masukkan salah!<br />
+              <?php if ($this->session->siteman_try) : ?>
+                Kesempatan mencoba <?= ($this->session->siteman_try - 1); ?> kali lagi.</p>
               <?php endif; ?>
-            <?php elseif ($_SESSION['siteman'] == -2) : ?>
-              Tidak dapat koneksi internet untuk memproses masuk akses admin.
+            <?php elseif ($this->session->siteman == -2) : ?>
+              Redaksi belum boleh masuk, SID belum memiliki sambungan internet!
             <?php endif; ?>
           </span>
         </div>
@@ -124,6 +128,40 @@
       if (event.target == modal) {
         modal.style.display = "none";
       }
+    }
+
+    //Checkbox Password Visible
+    var pass = $("#password");
+    $('#checkbox').click(function() {
+      if (pass.attr('type') === "password") {
+        pass.attr('type', 'text');
+      } else {
+        pass.attr('type', 'password')
+      }
+    });
+
+    //Countdown Login Failed
+    function start_countdown() {
+      var times = eval(<?= json_encode($this->session->siteman_timeout) ?>) - eval(<?= json_encode(time()) ?>);
+      var menit = Math.floor(times / 60);
+      var detik = times % 60;
+      timer = setInterval(function() {
+        detik--;
+        if (detik <= 0 && menit >= 1) {
+          detik = 60;
+          menit--;
+        }
+        if (menit <= 0 && detik <= 0) {
+          clearInterval(timer);
+          location.reload();
+        } else {
+          document.getElementById("countdown").innerHTML = "<b>Gagal 3 kali silakan coba kembali dalam " + menit + " MENIT " + detik + " DETIK </b>";
+        }
+      }, 1000)
+    }
+
+    if ($('#countdown').length) {
+      start_countdown();
     }
   </script>
 </body>

@@ -581,67 +581,67 @@ body.siteman {
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
-#form-head {
+#siteman #form-head {
 	text-align: center;
-	margin-bottom: 40px;
+	margin-bottom: 25px;
 }
-#form-head .form-logo img {
-	width: 100px;
+#siteman #form-head .form-logo img {
+	width: 75px;
 	margin-bottom: 20px;
 }
-#form-head .form-title {
+#siteman #form-head .form-title {
 	color: #fff;
 }
-#form-head .form-title h1 {
+#siteman #form-head .form-title h1 {
 	margin-bottom: 5px;
 }
-#form-head .form-title h1 span {
+#siteman #form-head .form-title h1 span {
 	display: block;
 	line-height: 1.1;
 }
-#form-head .form-title h1 span:nth-child(1) {
+#siteman #form-head .form-title h1 span:nth-child(1) {
 	font-size: 18px;
 }
-#form-head .form-title h1 span:nth-child(2) {
+#siteman #form-head .form-title h1 span:nth-child(2) {
 	font-size: 26px;
 }
-#form-head .form-title h3 span {
+#siteman #form-head .form-title h3 span {
 	display: block;
 	line-height: 1.2;
 	font-weight: 500;
 	font-size: 14px;
 	opacity: 0.9;
 }
-#form-body .input-form {
+#siteman #form-body .input-form {
 	border-radius: 25px;
 	overflow: hidden;
 	margin-bottom: 20px;
 }
-#form-body .input-form input {
+#siteman #form-body .input-form input {
 	width: 100%;
-	height: 50px;
-	line-height: 50px;
+	height: 45px;
+	line-height: 45px;
 	padding-left: 60px;
 	font-size: 15px;
 	font-weight: 700;
 	background: rgba(255, 255, 255, 0.9);
 	color: #999;
 }
-#form-body .input-form input:focus {
+#siteman #form-body .input-form input:focus {
 	background: rgba(255, 255, 255, 1);
 	color: #555;
 }
-#form-body .input-form i {
+#siteman #form-body .input-form i {
 	position: absolute;
 	background: transparent;
 	width: 60px;
 	text-align: center;
-	height: 50px;
-	line-height: 50px;
+	height: 45px;
+	line-height: 45px;
 	font-size: 18px;
 	color: #444;
 }
-#form-body .input-form button {
+#siteman #form-body .input-form button {
   position: absolute;
   right: 20px;
   padding: 0;
@@ -650,45 +650,55 @@ body.siteman {
   border: none;
 	border-radius: 0 25px 25px 0;
 }
-#form-body .input-form button i {
+#siteman #form-body .input-form button i {
 	position: relative;
 	background: transparent;
-	width: 50px;
+	width: 45px;
 	text-align: center;
 	font-size: 18px;
 	color: #444;
 }
+#form-body .input-checkbox {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #FFF;
+}
+#form-body .input-checkbox input {
+  margin-right: 6px;
+}
 #form-body .btn-form button {
 	border: 2px solid #222;
 	width: 100%;
-	height: 50px;
-	line-height: 50px;
+	height: 45px;
+	line-height: 45px;
 	border: 0;
 	padding: 0;
 	border-radius: 25px;
-	font-size: 17px;
+	font-size: 14px;
 	font-weight: 700;
 	background: #222;
 	color: #eee;
 	transition: all 0.3s;
 }
-#form-body .btn-form button:hover {
+#siteman #form-body .btn-form button:hover {
 	border: 2px solid #fff;
 	background: #3498db;
 }
-#form-body .form-response {
+#siteman #form-body .form-response {
 	text-align: center;
 	margin-top: 10px;
 	font-weight: 600;
 	font-size: 14px;
 }
-#form-body .form-response .response-warn {
+#siteman #form-body .form-response .response-warn {
 	color: #f7dc6f;
 }
-#form-body .form-response .response-block {
+#siteman #form-body .form-response .response-block {
 	color: #e74c3c;
 }
-#form-credit {
+#siteman #form-credit {
 	color: #fff;
 	font-size: 12px;
 	padding: 20px 0;
@@ -697,28 +707,28 @@ body.siteman {
 	position: relative;
 	text-transform: uppercase;
 }
-#form-credit a {
+#siteman #form-credit a {
 	color: #fff;
 }
-#form-credit a:hover {
+#siteman #form-credit a:hover {
 	text-decoration: underline;
 }
-#form-credit .credit-dev .credit-link {
+#siteman #form-credit .credit-dev .credit-link {
 	display: inline;
 	padding: 0;
 	margin: 0;
 }
-#form-credit .credit-dev .credit-link li {
+#siteman #form-credit .credit-dev .credit-link li {
 	list-style: none;
 	display: inline;
 	padding: 0;
 	margin: 0;
 }
-#form-credit .credit-dev .credit-link li:before {
+#siteman #form-credit .credit-dev .credit-link li:before {
 	content: "\00B7";
 	margin: 0 3px 0 1px;
 }
-#form-credit .credit-dev .credit-link li:first-child:before {
+#siteman #form-credit .credit-dev .credit-link li:first-child:before {
 	content: "";
 	margin: 0;
 }
