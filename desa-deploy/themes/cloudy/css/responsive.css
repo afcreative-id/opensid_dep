@@ -1,11 +1,4 @@
 @media screen and (max-width: 1250px) {
-	#gallery .wrapper {
-		padding-left: 10px;
-		padding-right: 10px;
-  }
-}
-
-@media screen and (max-width: 1100px) {
 	#head-info .wrapper,
 	#head-nav,
 	#search-bar form,
@@ -27,9 +20,13 @@
 	#sidebar {
 		margin: 10px 0 0;
 	}
+	#gallery .wrapper {
+		padding-left: 10px;
+		padding-right: 10px;
+  }
 }
 
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 1000px) {
 	#head-info .wrapper,
 	#head-nav,
 	#search-bar form,
@@ -43,21 +40,10 @@
 	#search-bar.open {
 		padding: 0;
 	}
-	#foot .foot-widget .logo {
-		width: 30%;
-	}
-	#foot .credit-l,
-	#foot .credit-r {
-		float: none;
-		text-align: center;
-	}
-}
-
-@media screen and (max-width: 900px) {
 	scrollbar-top {
 		top: 55px;
-	}
-	#head-title {
+  }
+  #head-title {
 		margin-left: 35px;
 	}
 	#menu {
@@ -266,6 +252,14 @@
 		line-height: 55px;
 		text-align: center;
 	}
+	#foot .foot-widget .logo {
+		width: 30%;
+	}
+	#foot .credit-l,
+	#foot .credit-r {
+		float: none;
+		text-align: center;
+	}
 }
 
 @media screen and (max-width: 850px) {
@@ -281,8 +275,9 @@
 		max-width: 850px;
 	}
 	#body .wrapper #content {
-		float: none;
-		width: 100%;
+    float: none;
+    display: inline-block;
+    width: 100%;
   }
   #body #content h4.title-tag {
     padding-top: 10px;
@@ -317,7 +312,7 @@
 		height: 120px;
 	}
 	#foot .foot-widget .links {
-		margin: 10px 0 30px 0;
+		margin: 30px 0;
 	}
 	#foot .foot-widget .villinfo {
 		float: none;
