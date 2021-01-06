@@ -98,7 +98,7 @@
             $('#loading').show();
             $.ajax({
               type: "GET",
-              url: "<?php echo site_url('api.php'); ?>?nik=" + nik,
+              url: "<?php echo site_url('api/get_penduduk/'); ?>" + nik,
               data: "",
               dataType: 'json',
               success: function(data) {
