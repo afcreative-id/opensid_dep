@@ -92,14 +92,12 @@ class Dokumen_sekretariat extends Admin_Controller {
 			}
 		}
 
-		$header = $this->header_model->get_data();
-		$data['main_content'] = 'dokumen/table';
+		$this->set_minsidebar(1);
+		$data['main_content'] = 'dokumen/table_buku_umum';
 		$data['subtitle'] = ($kat == '3') ? "Buku Peraturan Desa" : "Buku Keputusan Kepala Desa";
 		$data['selected_nav'] = ($kat == '3') ? 'peraturan' : 'keputusan';
-		$this->_set_tab($kat);
-		$this->set_minsidebar(1);
 
-		$this->load->view('header', $header);
+		$this->load->view('header', $this->header);
 		$this->load->view('nav', $nav);
 		$this->load->view('bumindes/umum/main', $data);
 		$this->load->view('footer');
