@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 11, 2021 at 01:30 AM
+-- Generation Time: Feb 08, 2021 at 02:15 AM
 -- Server version: 5.7.31
 -- PHP Version: 7.4.9
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `opensid_dep`
+-- Database: `opensid_dev`
 --
 
 -- --------------------------------------------------------
@@ -2861,7 +2861,7 @@ CREATE TABLE `kelompok` (
   `id_master` int(11) NOT NULL,
   `id_ketua` int(11) NOT NULL,
   `nama` varchar(50) NOT NULL,
-  `keterangan` varchar(100) NOT NULL,
+  `keterangan` varchar(300) DEFAULT NULL,
   `kode` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -2876,7 +2876,10 @@ CREATE TABLE `kelompok_anggota` (
   `id_kelompok` int(11) NOT NULL,
   `id_penduduk` int(11) NOT NULL,
   `no_anggota` varchar(20) DEFAULT NULL,
-  `keterangan` text
+  `keterangan` text,
+  `jabatan` varchar(50) DEFAULT '90',
+  `no_sk_jabatan` varchar(50) DEFAULT NULL,
+  `foto` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7715,7 +7718,8 @@ INSERT INTO `log_bulanan` (`id`, `pend`, `wni_lk`, `wni_pr`, `kk`, `tgl`, `kk_lk
 (1608, 97, 46, 51, 37, '2020-08-31 17:33:33', 28, 9, 0, 0),
 (1610, 97, 46, 51, 37, '2020-11-05 01:40:11', 28, 9, 0, 0),
 (1611, 97, 46, 51, 37, '2020-12-07 04:57:35', 28, 9, 0, 0),
-(1612, 97, 46, 51, 37, '2021-01-06 02:33:27', 28, 9, 0, 0);
+(1612, 97, 46, 51, 37, '2021-01-06 02:33:27', 28, 9, 0, 0),
+(1613, 97, 46, 51, 37, '2021-02-08 02:00:10', 28, 9, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -7980,7 +7984,8 @@ INSERT INTO `migrasi` (`id`, `versi_database`) VALUES
 (9, '2020100103'),
 (10, '2020110101'),
 (11, '2020120101'),
-(12, '2021010101');
+(12, '2021010101'),
+(13, '2021020101');
 
 -- --------------------------------------------------------
 
@@ -8133,7 +8138,7 @@ CREATE TABLE `notifikasi` (
 --
 
 INSERT INTO `notifikasi` (`id`, `kode`, `judul`, `jenis`, `isi`, `server`, `tgl_berikutnya`, `updated_at`, `updated_by`, `frekuensi`, `aksi`, `aktif`) VALUES
-(1, 'persetujuan_penggunaan', '<i class=\"fa fa-file-text-o text-black\"></i> &nbsp;Persetujuan Penggunaan OpenSID', 'persetujuan', '<p><b>Untuk menggunakan OpenSID, anda dan desa anda perlu menyetujui ketentuan berikut:</b>\n					<ol>\n						<li>Pengguna telah membaca dan menyetujui <a href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\" target=\"_blank\">Lisensi GPL V3</a>.</li>\n						<li>OpenSID gratis dan disediakan \"SEBAGAIMANA ADANYA\", di mana segala tanggung jawab termasuk keamanan data desa ada pada pengguna.</li>\n						<li>Pengguna paham bahwa setiap ubahan OpenSID juga berlisensi GPL V3 yang tidak dapat dimusnahkan, dan aplikasi ubahan itu juga sumber terbuka yang bebas disebarkan oleh pihak yang menerima.</li>\n						<li>Pengguna mengetahui, paham dan menyetujui bahwa OpenSID akan mengirim data penggunaan ke server OpenDesa secara berkala untuk tujuan menyempurnakan OpenSID, dengan pengertian bahwa data yang dikirim sama sekali tidak berisi data identitas penduduk atau data sensitif desa lainnya.</li>\n					</ol></p>\n					<b>Apakah anda dan desa anda setuju dengan ketentuan di atas?</b>', 'client', '2021-02-03 01:44:29', '2020-11-05 01:44:29', 1, 90, 'notif/update_pengumuman,siteman', 1),
+(1, 'persetujuan_penggunaan', '<i class=\"fa fa-file-text-o text-black\"></i> &nbsp;Persetujuan Penggunaan OpenSID', 'persetujuan', '<p><b>Untuk menggunakan OpenSID, anda dan desa anda perlu menyetujui ketentuan berikut:</b>\n					<ol>\n						<li>Pengguna telah membaca dan menyetujui <a href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\" target=\"_blank\">Lisensi GPL V3</a>.</li>\n						<li>OpenSID gratis dan disediakan \"SEBAGAIMANA ADANYA\", di mana segala tanggung jawab termasuk keamanan data desa ada pada pengguna.</li>\n						<li>Pengguna paham bahwa setiap ubahan OpenSID juga berlisensi GPL V3 yang tidak dapat dimusnahkan, dan aplikasi ubahan itu juga sumber terbuka yang bebas disebarkan oleh pihak yang menerima.</li>\n						<li>Pengguna mengetahui, paham dan menyetujui bahwa OpenSID akan mengirim data penggunaan ke server OpenDesa secara berkala untuk tujuan menyempurnakan OpenSID, dengan pengertian bahwa data yang dikirim sama sekali tidak berisi data identitas penduduk atau data sensitif desa lainnya.</li>\n					</ol></p>\n					<b>Apakah anda dan desa anda setuju dengan ketentuan di atas?</b>', 'client', '2021-05-09 02:14:22', '2021-02-08 02:14:22', 1, 90, 'notif/update_pengumuman,siteman', 1),
 (2, 'tracking_off', '<i class=\"fa fa-exclamation-triangle text-red\"></i> &nbsp;Peringatan Tracking Off', 'peringatan', '<p>Kami mendeteksi bahwa anda telah mematikan fitur tracking. Bila dimatikan, penggunaan website desa anda tidak akan tercatat di server OpenDesa dan tidak akan menerima informasi penting yang sesekali dikirim OpenDesa.</p>\n					<br><b>Hidupkan kembali tracking untuk mendapatkan informasi dari OpenDesa?</b>', 'client', '2020-07-29 20:37:42', '2020-07-30 03:37:03', 1, 90, 'setting/aktifkan_tracking,notif/update_pengumuman', 0);
 
 -- --------------------------------------------------------
@@ -8661,7 +8666,7 @@ INSERT INTO `setting_aplikasi` (`id`, `key`, `value`, `keterangan`, `jenis`, `ka
 (17, 'libreoffice_path', '', 'Path tempat instal libreoffice di server SID', '', ''),
 (18, 'sumber_gambar_slider', '1', 'Sumber gambar slider besar', NULL, NULL),
 (19, 'sebutan_singkatan_kadus', 'kawil', 'Sebutan singkatan jabatan kepala dusun', NULL, NULL),
-(20, 'current_version', '21.01', 'Versi sekarang untuk migrasi', NULL, 'readonly'),
+(20, 'current_version', '21.02', 'Versi sekarang untuk migrasi', NULL, 'readonly'),
 (21, 'timezone', 'Asia/Jakarta', 'Zona waktu perekaman waktu dan tanggal', NULL, NULL),
 (23, 'web_artikel_per_page', '6', 'Jumlah artikel dalam satu halaman', 'int', 'web_theme'),
 (24, 'penomoran_surat', '2', 'Penomoran surat mulai dari satu (1) setiap tahun', 'option', NULL),
@@ -8682,7 +8687,7 @@ INSERT INTO `setting_aplikasi` (`id`, `key`, `value`, `keterangan`, `jenis`, `ka
 (40, 'sebutan_nip_desa', 'NIPD', 'Pengganti sebutan label niap/nipd', NULL, NULL),
 (43, 'token_opensid', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'Token OpenSID', '', 'sistem'),
 (44, 'layanan_mandiri', '1', 'Apakah layanan mandiri ditampilkan atau tidak', 'boolean', 'setting_mandiri'),
-(45, 'ukuran_lebar_bagan', '800', 'Ukuran Lebar Bagan Organisasi (800 / 1200 / 1400)', 'int', 'conf_web');
+(45, 'ukuran_lebar_bagan', '800', 'Ukuran Lebar Bagan (800 / 1200 / 1400)', 'int', 'conf_bagan');
 
 -- --------------------------------------------------------
 
@@ -8833,6 +8838,7 @@ INSERT INTO `setting_modul` (`id`, `modul`, `url`, `aktif`, `ikon`, `urut`, `lev
 (96, 'Informasi Publik', 'informasi_publik', 1, '', 0, 0, 2, '', 52),
 (97, 'Daftar Persyaratan', 'surat_mohon', 1, 'fa fa-book', 5, 2, 0, '', 4),
 (98, 'Permohonan Surat', 'permohonan_surat_admin/clear', 1, 'fa-files-o', 0, 0, 0, '', 14),
+(101, 'Status Desa', 'status_desa', 1, 'fa-dot-circle-o', 4, 0, 0, '', 200),
 (200, 'Info [Desa]', 'identitas_desa', 1, 'fa-dashboard', 2, 2, 1, 'fa fa-home', 0),
 (201, 'Keuangan', 'keuangan', 1, 'fa-balance-scale', 6, 2, 0, 'fa-balance-scale', 0),
 (202, 'Impor Data', 'keuangan/impor_data', 1, 'fa-cloud-upload', 1, 2, 0, 'fa-cloud-upload', 201),
@@ -8853,6 +8859,7 @@ INSERT INTO `setting_modul` (`id`, `modul`, `url`, `aktif`, `ikon`, `urut`, `lev
 (305, 'Administrasi Pembangunan', 'bumindes_pembangunan', 1, 'fa-university', 4, 2, 0, 'fa fa-university', 301),
 (306, 'Administrasi Lainnya', 'bumindes_lain', 1, 'fa-archive', 5, 2, 0, 'fa fa-archive', 301),
 (310, 'Buku Eskpedisi', 'ekspedisi/clear', 1, 'fa-files-o', 0, 0, 0, '', 302),
+(311, 'Buku Lembaran Dan Berita Desa', 'lembaran_desa/clear', 1, 'fa-files-o', 0, 0, 0, '', 302),
 (314, 'Pengaturan', 'setting/mandiri', 1, 'fa-gear', 6, 2, 0, 'fa-gear', 14);
 
 -- --------------------------------------------------------
@@ -9018,7 +9025,8 @@ INSERT INTO `sys_traffic` (`Tanggal`, `ipAddress`, `Jumlah`) VALUES
 ('2020-12-29', '', 2),
 ('2021-01-06', '', 4),
 ('2021-01-07', '::1{}', 1),
-('2021-01-11', '', 2);
+('2021-01-11', '', 2),
+('2021-02-08', '::1{}', 1);
 
 -- --------------------------------------------------------
 
@@ -14395,7 +14403,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `id_grup`, `email`, `last_login`, `active`, `nama`, `company`, `phone`, `foto`, `session`) VALUES
-(1, 'superadmin', '$2y$10$ilrxD7dcQCD9ASypa1YSB.iq88SzN0tjQI6/vPsvFIX95Nxs/F1yu', 1, 'afarhansyah98@gmail.com', '2021-01-11 08:01:37', 1, 'Administrator', 'ADMIN', '085156223739', 'favicon.png', 'a8d4080245664ed2049c1b2ded7cac30'),
+(1, 'superadmin', '$2y$10$ilrxD7dcQCD9ASypa1YSB.iq88SzN0tjQI6/vPsvFIX95Nxs/F1yu', 1, 'afarhansyah98@gmail.com', '2021-02-08 09:01:49', 1, 'Administrator', 'ADMIN', '085156223739', 'favicon.png', 'a8d4080245664ed2049c1b2ded7cac30'),
 (2, 'admin', '$2y$10$sLAJcc5uwmAL7QuFmT6waOC/0Y7zqyXp1OXwCMOhoLUzbjVdx4utO', 1, '', '2020-12-29 18:47:00', 1, 'Admin', NULL, '', 'kuser.png', 'f7c3c724fdfb1dced791664dc55fcefc'),
 (3, 'operator', '$2y$10$Uc0x6HeRjh75w5wLqpYrD.WUpgpTuxPOMf33vTL7jdfWpAZkc9pki', 2, '', NULL, 1, 'Operator', NULL, '', 'kuser.png', '0ac84a31f5c3726386160904b5f3610f'),
 (4, 'redaksi', '$2y$10$sxgJmDdwDkaxiRT7BIDPU.qE8cE/oZMf97LzVE5ka3GkJlX8PVonq', 3, '', NULL, 1, 'Redaksi', NULL, '', 'kuser.png', 'a6822c4bdb0b9f242791753c00ee66e2'),
@@ -16391,7 +16399,7 @@ ALTER TABLE `line`
 -- AUTO_INCREMENT for table `log_bulanan`
 --
 ALTER TABLE `log_bulanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1613;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1614;
 
 --
 -- AUTO_INCREMENT for table `log_ekspor`
@@ -16445,7 +16453,7 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT for table `migrasi`
 --
 ALTER TABLE `migrasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `mutasi_cdesa`
