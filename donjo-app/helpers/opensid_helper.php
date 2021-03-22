@@ -45,12 +45,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @link 	https://github.com/OpenSID/OpenSID
  */
 
-define("VERSION", '21.02');
+define("VERSION", '21.03-pasca');
 /**
  * Untuk migrasi database. Simpan nilai ini di tabel migrasi untuk menandakan sudah migrasi ke versi ini
  * Versi database = [yyyymmdd][nomor urut dua digit]. Ubah setiap kali mengubah struktur database.
  */
-define('VERSI_DATABASE', '2021020101');
+define('VERSI_DATABASE', '2021030101');
 define("LOKASI_LOGO_DESA", 'desa/logo/');
 define("LOKASI_ARSIP", 'desa/arsip/');
 define("LOKASI_CONFIG_DESA", 'desa/config/');
@@ -975,9 +975,10 @@ function ket_mutasi_persil($id=0)
 	return $ket;
 }
 
-function status_sukses($outp, $gagal_saja=false)
+function status_sukses($outp, $gagal_saja=false, $msg='')
 {
 	$CI =& get_instance();
+	if ($msg) $CI->session->error_msg = $msg;
 	if ($gagal_saja)
 	{
 		if (!$outp) $CI->session->success = -1;
