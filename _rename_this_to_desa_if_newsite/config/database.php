@@ -14,8 +14,8 @@
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
-$db['default']['password'] = '';
-$db['default']['database'] = 'opensid';
+$db['default']['password'] = 'afroot';
+$db['default']['database'] = 'opensid_dep';
 
 /*
 | Untuk setting koneksi database 'Strict Mode'

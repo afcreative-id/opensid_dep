@@ -4,6 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <?php $this->load->view("$folder_themes/commons/meta.php"); ?>
+    <style>#aparatur_desa{height: 300px;}</style>
     <!-- </head> -->
 </head>
 <body onLoad="renderDate()">
