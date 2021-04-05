@@ -1,0 +1,9 @@
+- Admin Kominfo
+id : 1
+u : adminkominfo
+p : Superadmin_00
+
+- Admin Desa
+id : 2
+u : admindesa
+p : Administrator_01
