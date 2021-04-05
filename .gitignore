@@ -55,6 +55,3 @@ version.json
 # obfuscator
 Obfuscator.php
 make_obfuscate.php
-
-_export_this_db_if_newsite
-_replace_this_if_update
