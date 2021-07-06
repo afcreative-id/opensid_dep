@@ -45,12 +45,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @link 	https://github.com/OpenSID/OpenSID
  */
 
-define("VERSION", '21.04');
+define("VERSION", '21.07');
 /**
  * Untuk migrasi database. Simpan nilai ini di tabel migrasi untuk menandakan sudah migrasi ke versi ini
  * Versi database = [yyyymmdd][nomor urut dua digit]. Ubah setiap kali mengubah struktur database.
  */
-define('VERSI_DATABASE', '2021040101');
+define('VERSI_DATABASE', '2021070101');
 define("LOKASI_LOGO_DESA", 'desa/logo/');
 define("LOKASI_ARSIP", 'desa/arsip/');
 define("LOKASI_CONFIG_DESA", 'desa/config/');
@@ -453,7 +453,10 @@ function httpPost($url, $params)
 		curl_setopt($ch, CURLOPT_POST, count($postData));
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
 
-		// Paksa tidak menunggu hasil tracker
+		// Batasi waktu koneksi dan ambil data, supaya tidak menggantung kalau ada error koneksi
+		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 4);
+		curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+
 		/*curl_setopt($ch, CURLOPT_FORBID_REUSE, true);
 		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1);
 		curl_setopt($ch, CURLOPT_DNS_CACHE_TIMEOUT, 10);

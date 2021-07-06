@@ -9,6 +9,8 @@ assignees: ''
 
 **Jelaskan error yg dialami**
 <!--
+Harap tidak melaporkan masalah instal OpenSID. Masalah pada waktu install harap ditanyakan di https://www.facebook.com/groups/OpenSID atau di https://t.me/joinchat/SI0GWHeqKT39Gxhh, karena terkait sistem masing2 pengguna. 
+
 Berikan keterangan yg jelas dan singkat mengenai error yg dialami. 
 Pastikan error ini juga ditemukan di https://demo.opensid.or.id (untuk RIlis Umum) atau di https://berputar.opensid.or.id (untuk RIlis Premium).
 -->
@@ -41,6 +43,11 @@ Lampirkan isi file di folder `logs` atau tampakan error di console inspector bro
 <!--
 Error ini terjadi di rilis/versi berapa: Rilis umum (mis. v21.03) atau premium (v21.03-premium)?
 -->
+
+
+**Tema Yg Digunakan**
+<!-- Sebutkan tema dan versinya yg digunakan -->
+
 
 
 **Informasi tambahan**
