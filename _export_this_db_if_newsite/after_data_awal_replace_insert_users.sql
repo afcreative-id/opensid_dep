@@ -1,0 +1,3 @@
+INSERT INTO `user` (`id`, `username`, `password`, `id_grup`, `email`, `last_login`, `active`, `nama`, `company`, `phone`, `foto`, `session`) VALUES
+(1, 'adminkominfo', '$2y$10$QNpDJEpPdffMyU0BqyzW2uGrO2hbg0W.WidyuAI0ndF.j6pVrdmv6', 1, '', '2021-01-31 17:54:22', 1, 'Administrator', 'ADMIN', '', 'favicon.png', 'a8d4080245664ed2049c1b2ded7cac30'),
+(2, 'admindesa', '$2y$10$JpzRuKZG6WQeDE1086LGr.EcQSZeXQ/zC8dZHguuDCU7j.qDFHlRe', 1, '', '2021-04-05 09:21:17', 1, 'Administrator', NULL, '', 'kuser.png', '34afa66c0f5e142f2f72b6f46633ad90');
